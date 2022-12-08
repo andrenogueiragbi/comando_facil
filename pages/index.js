@@ -12,7 +12,7 @@ export async function getServerSideProps(props) {
 
     return {
         props: {
-            types: data.types
+            platforms: data.data
         }
     }
 
@@ -21,7 +21,7 @@ export async function getServerSideProps(props) {
 }
 
 
-export default function Home({types}) {
+export default function Home({platforms}) {
     return (
 
         <>
@@ -41,7 +41,7 @@ export default function Home({types}) {
             <div className={styles.pokemon_container}>
 
                 {
-                    types.map((item)=>(
+                    platforms.map((item)=>(
                         <Card key={item.id} item={item}/>
                     ))
                     

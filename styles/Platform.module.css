@@ -1,0 +1,165 @@
+.pokemon_container {
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 2.5em;
+    text-transform: capitalize;
+    background-color: #333;
+    color: #fff;
+    padding: 0.3em;
+    margin: 0.8em auto;
+    width: 200px;
+  }
+  
+  .pokemon_container h3 {
+    margin: 0.6em auto;
+    font-size: 1.2em;
+  }
+  
+  .types_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+.btn_go_back {
+  background: #dadada;
+  border-color: #dadada;
+  border-radius: 5px;
+  padding: 0.70rem;
+  font-size: 1.0rem;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace;
+  border: 2px solid #e33d33;
+  box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.5);
+  background-color: #333;
+  color: #fff;
+  margin-top: 1.5em;
+}
+
+
+.info_null{
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+
+}
+  
+  .type {
+    margin-top: 1em ;
+    padding: 0.6em 1em;
+    color: #fff;
+
+    margin-right: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    border: 2px solid #e33d33;
+    box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.5);
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .type_normal {
+    background-color: #aa9;
+  }
+  
+  .type_fire {
+    background-color: #f42;
+  }
+  
+  .type_water {
+    background-color: #39f;
+  }
+  
+  .type_eletric {
+    background-color: #fc3;
+  }
+  
+  .type_grass {
+    background-color: #7c5;
+  }
+  
+  .type_ice {
+    background-color: #6cf;
+  }
+  
+  .type_fighting {
+    background-color: #b54;
+  }
+  
+  .type_poison {
+    background-color: #a59;
+  }
+  
+  .type_ground {
+    background-color: #db5;
+  }
+  
+  .type_flying {
+    background-color: #89f;
+  }
+  
+  .type_psychic {
+    background-color: #f59;
+  }
+  
+  .type_bug {
+    background-color: #ab2;
+  }
+  
+  .type_rock {
+    background-color: #ba6;
+  }
+  
+  .type_ghost {
+    background-color: #66b;
+  }
+  
+  .type_dragon {
+    background-color: #76e;
+  }
+  
+  .type_dark {
+    background-color: #754;
+  }
+  
+  .type_steel {
+    background-color: #aab;
+  }
+  
+  .type_fairy {
+    background-color: #e9e;
+  }
+  
+  .data_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5em;
+  }
+  
+  .data_container div {
+    margin: 1em 0;
+    padding: 0 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .data_height {
+    border-right: 1px solid #ccc;
+  }
+
+  .btn {
+    text-decoration: none;
+
+    color: #fff;
+    padding: .7em 1.2em;
+    font-weight: bold;
+    transition: 0.2s;
+    border-radius: .5rem;
+}

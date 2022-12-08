@@ -1,21 +1,26 @@
 import Image from "next/image"
 import Link from "next/link"
-import styles from '../../styles/Command.module.css'
+import styles from '../../styles/Platform.module.css'
+import { useRouter } from 'next/router'
 
 
 export async function getServerSideProps(context) {
     const id = context.params.platform_id
 
-    console.log(id)
     const link = 'http://localhost:5000'
 
 
-    const result = await fetch(`${link}/platform/${id}`)
-    const data = await result.json()
+    const resultPlatform = await fetch(`${link}/platform/${id}`)
+    const dataPlatform = await resultPlatform.json()
+
+    const resultTitle = await fetch(`${link}/title/platform/${id}`)
+    const dataTitle = await resultTitle.json()
+
 
     return {
         props: {
-            types: data.types
+            platform: dataPlatform.data,
+            title: dataTitle.data
         }
     }
 
@@ -63,21 +68,20 @@ export async function getServerSideProps(context) {
  */
 
 
-export default function pPokemon({ types }) {
+export default function Comandos({ platform, title }) {
 
-    console.log(">>", types)
-
+    const router = useRouter()
 
 
     return (
         <div className={styles.pokemon_container}>
-            <h1 className={styles.title}>{types.name}</h1>
+            <h1 className={styles.title}>{platform.name}</h1>
 
             <Image
-                src={types.avatar ? types.avatar : 'https://www.freepnglogos.com/uploads/warning-sign-png/image-warning-sign-elena-avalor-21.png'}
+                src={platform.avatar ? platform.avatar : 'https://www.freepnglogos.com/uploads/warning-sign-png/image-warning-sign-elena-avalor-21.png'}
                 width="200"
                 height="200"
-                alt={types.name}
+                alt={platform.name}
             />
 
 
@@ -85,38 +89,35 @@ export default function pPokemon({ types }) {
                 <h3>Descrição: </h3>
                 <div>
 
-                    <p>{types.description}</p>
+                    <p>{platform.description}</p>
                 </div>
 
                 <div className={styles.types_container} >
 
-          
-                    <span className={styles.type}>      
-                        <Link legacyBehavior href={`/commands/5`}>
-                            <a className={styles.btn} >Comandos</a>
-                        </Link>
-                    </span>
-         
-                    <span className={styles.type}>      
-                        <Link legacyBehavior href={`/platform/5`}>
-                            <a className={styles.btn} >Comandos</a>
-                        </Link>
-                    </span>
-         
-                    <span className={styles.type}>      
-                        <Link legacyBehavior href={`/platform/5`}>
-                            <a className={styles.btn} >Comandos</a>
-                        </Link>
-                    </span>
-         
-                    <span className={styles.type}>      
-                        <Link legacyBehavior href={`/platform/5`}>
-                            <a className={styles.btn} >Comandos</a>
-                        </Link>
-                    </span>
-         
+                    {title.length > 0 ?
+                        title.map((item) => (
+                            <span className={styles.type}>
+                                <Link legacyBehavior href={`/command/${item.id}`}>
+                                    <a className={styles.btn} >{item.title}</a>
+                                </Link>
+                            </span>
+
+                        ))
+
+
+                        :
+                        <>
+                            <h1 className={styles.info_null} >😌  Sem Comandos por aqui.</h1>
+                          
+                        </>
+
+
+                    }
+                    
+
 
                 </div>
+                <button onClick={() => router.back()} className={styles.btn_go_back}>voltar!</button>
 
             </div>
 
