@@ -4,10 +4,10 @@ import styles from '../styles/Home.module.css'
 import Card from '../components/Card'
 
 export async function getServerSideProps(props) {
-    const link = 'http://localhost:5001'
+    const link = 'http://localhost:5000'
 
     
-    const result = await fetch(`${link}/v1/type`)
+    const result = await fetch(`${link}/platforms`)
     const data = await result.json()
 
     return {
