@@ -1,0 +1,46 @@
+.navbar{
+    display: flex;  /*um elemento ao lado do outro*/
+    justify-content: space-between;  /*dividir os elementos na tela, porém, tendo as pontos com inicio*/
+    align-items: center; /*alinhamneto na vertical*/
+    padding: 1em 1.2em; /*respiro nas laterais*/
+    margin-bottom: 2em; /*afasta os elementos*/
+    background-color: #333;  /*conde fundo*/
+    color: #fff; /*cor da texto*/
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.logo h1{
+    margin-left: .5em;
+
+}
+
+.link_items{
+    display: flex;
+    list-style: none;
+
+}
+
+.link_items li{
+    margin-right: 1.3em;
+
+}
+
+.link_items li a{
+    color: #fff;
+    text-decoration: none;
+    padding: 5px;
+    transition: .4s;
+    border-bottom: 2px solid transparent;
+
+}
+
+.link_items li a:hover{
+    border-color: #fff;
+
+}
