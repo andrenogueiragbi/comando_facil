@@ -96,7 +96,7 @@ export default function Comandos({ platform, title }) {
 
                     {title.length > 0 ?
                         title.map((item) => (
-                            <span className={styles.type}>
+                            <span key={item.id} className={styles.type}>
                                 <Link legacyBehavior href={`/command/${item.id}`}>
                                     <a className={styles.btn} >{item.title}</a>
                                 </Link>

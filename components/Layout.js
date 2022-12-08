@@ -10,6 +10,7 @@ export default function Layout({children}) {
         <Head>
             <link rel='shortcut ion' href='/images/favivon.png'/>
             <title>Comando Fácil</title>
+            
 
         </Head>
         <Navbar/>
