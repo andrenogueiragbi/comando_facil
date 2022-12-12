@@ -75,22 +75,37 @@ export default function Comandos({ platform, title }) {
 
     return (
         <div className={styles.pokemon_container}>
-            <h1 className={styles.title}>{platform.name}</h1>
 
-            <Image
-                src={platform.avatar ? platform.avatar : 'https://www.freepnglogos.com/uploads/warning-sign-png/image-warning-sign-elena-avalor-21.png'}
-                width="200"
-                height="200"
-                alt={platform.name}
-            />
+            {title.length > 0 ?
+                <>
+                    <h1 className={styles.title}>{title[0].platform.name}</h1>
+
+                    <Image
+                        src={title[0].platform.avatar ? title[0].platform.avatar : 'https://www.freepnglogos.com/uploads/warning-sign-png/image-warning-sign-elena-avalor-21.png'}
+                        width="200"
+                        height="200"
+                        alt={title[0].platform.name}
+                    />
+                </>
+
+                :
+                false
+
+            }
+
 
 
             <div>
-                <h3>Descrição: </h3>
-                <div>
+                <>  
+                
 
-                    <p>{platform.description}</p>
-                </div>
+                    <h3>Descrição: </h3>
+                    <div>
+
+                        <p>{platform.description}</p>
+                    </div>
+
+                </>
 
                 <div className={styles.types_container} >
 
@@ -108,12 +123,12 @@ export default function Comandos({ platform, title }) {
                         :
                         <>
                             <h1 className={styles.info_null} >😌  Sem Comandos por aqui.</h1>
-                          
+
                         </>
 
 
                     }
-                    
+
 
 
                 </div>
