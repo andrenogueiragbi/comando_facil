@@ -46,9 +46,11 @@ export default function Pokemon({ command }) {
             {copy && <ModalCopy />}
 
 
+            { command[0]?.title &&
             <h1 className={styles.title}>
-                Comando title de <a href="https://nextjs.org">Platform</a>
+                Comando "{command[0].title.title.toUpperCase()}" da Plataforma <a href="https://nextjs.org">Platform</a>
             </h1>
+            }
 
             {
                 command.length > 0 ?

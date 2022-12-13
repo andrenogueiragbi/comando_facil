@@ -10,16 +10,11 @@ export async function getServerSideProps(context) {
     const link = 'http://localhost:5000'
 
 
-    const resultPlatform = await fetch(`${link}/platform/${id}`)
-    const dataPlatform = await resultPlatform.json()
-
     const resultTitle = await fetch(`${link}/title/platform/${id}`)
     const dataTitle = await resultTitle.json()
 
-
     return {
         props: {
-            platform: dataPlatform.data,
             title: dataTitle.data
         }
     }
@@ -29,46 +24,10 @@ export async function getServerSideProps(context) {
 }
 
 
-/* export const getStaticPaths = async () => {
-
-    const maxPokemos = 251
-    const api = 'https://pokeapi.co/api/v2/pokemon'
-    const res = await fetch(`${api}/?limit=${maxPokemos}`)
-    const data = await res.json()
-
-    const paths = data.results.map((pokemon, index) => {
-        return {
-            params: { pokemonId: (index + 1).toString() },
-        }
-    })
-
-    return {
-        paths,
-        fallback: false,
-    }
 
 
-}
- */
 
-/* export const getStaticProps = async (context) => {
-    const id = context.params.pokemonId
-
-    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
-
-    const data = await res.json()
-
-
-    return {
-        props: { pokemon: data }
-    }
-
-
-}
- */
-
-
-export default function Comandos({ platform, title }) {
+export default function Comandos({  title }) {
 
     const router = useRouter()
 
@@ -96,16 +55,22 @@ export default function Comandos({ platform, title }) {
 
 
             <div>
-                <>  
-                
 
-                    <h3>Descrição: </h3>
-                    <div>
 
-                        <p>{platform.description}</p>
-                    </div>
+                {
+                    title.length > 0 &&
+                    <>
+                        <h3>Descrição: </h3>
+                        <div>
 
-                </>
+                            <p>{title[0].platform.name}</p>
+                        </div>
+                    </>
+                }
+
+
+
+
 
                 <div className={styles.types_container} >
 
