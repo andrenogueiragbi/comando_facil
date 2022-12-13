@@ -48,7 +48,7 @@ export default function Pokemon({ command }) {
 
             { command[0]?.title &&
             <h1 className={styles.title}>
-                Comando "{command[0].title.title.toUpperCase()}" da Plataforma <a href="https://nextjs.org">Platform</a>
+                Comando {command[0].title.title.toUpperCase()} da Plataforma <a href="https://nextjs.org">Platform</a>
             </h1>
             }
 

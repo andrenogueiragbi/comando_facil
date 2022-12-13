@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import Image from "next/image";
 
-export default function ({ icon, title, timer, timerProgressBar, image, nome, vencimento, valor }) {
+export default function ModalCopy ({ icon, title, timer, timerProgressBar, image, nome, vencimento, valor }) {
   const MySwal = withReactContent(Swal);
 
 
