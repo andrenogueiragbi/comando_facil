@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 export async function getServerSideProps(context) {
     const id = context.params.platform_id
 
-    const link = 'http://localhost:5000'
+    const link = 'https://commands-api.onrender.com'
 
 
     const resultTitle = await fetch(`${link}/title/platform/${id}`)

@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css'
 import Card from '../components/Card'
 
 export async function getServerSideProps(props) {
-    const link = 'http://localhost:5000'
+    const link = 'https://commands-api.onrender.com'
 
     
     const result = await fetch(`${link}/platforms`)

@@ -10,7 +10,7 @@ import ModalCopy from "../../../../../components/ModalCopy";
 export async function getServerSideProps(context) {
     const id = context.params.title_id
 
-    const link = 'http://localhost:5000'
+    const link = 'https://commands-api.onrender.com'
 
 
     const resultCommand = await fetch(`${link}/commands/title/${id}`)
