@@ -12,7 +12,17 @@ export default function About() {
     return (
         <div className={styles.container}>
             <div className={styles.about}>
-                <h1 className={styles.title} >Comando<span>Next</span></h1>
+                <div className={styles.title_conteiner}>
+                    <h1 className={styles.title} >Comando<span>Next</span></h1>
+                    <Image
+                        src='/images/code.png'
+                        width={50}
+                        height={50}
+                        alt='code'
+
+                    />
+                </div>
+
 
                 <h2>ComandoNext é um App construído em Next.js, nodejs, ORM sequelize, banco de dados PostgreSQL. O intuído da aplicação é reunir todos os comandos das mais diferentes plataformas e tecnologia em um único lugar, podendo ser consultado e tirando as dúvidas.
                     Voltado para ajudar o usuário a lembrar daqueles comandos que não é usado muito no dia-a-dia e acaba esquecendo, ComandoNext irá ajudar nisso.

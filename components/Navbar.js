@@ -7,7 +7,7 @@ export default function Navbar() {
  return (
    <nav className={style.navbar}>
     <div className={style.logo}>
-        <Image src='/images/pokeball.png' width={30} height={30} alt='pokeball'/>
+        <Image src='/images/code.png' width={30} height={30} alt='pokeball'/>
         <h1>Comando Next</h1>
     </div>
 
