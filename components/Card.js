@@ -14,7 +14,7 @@ export default function Card({ item }) {
             />
             <p className={styles.id} >#{item.id}</p>
             <h3 className={styles.title }>{item.name}</h3>
-            <Link legacyBehavior href={`/platform/${item.id}`}>
+            <Link legacyBehavior href={`/${item.name}/${item.id}`}>
                 <a className={styles.btn} >Comandos</a>
             </Link>
 

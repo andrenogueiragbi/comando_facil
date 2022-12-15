@@ -15,7 +15,8 @@ export async function getServerSideProps(context) {
 
     return {
         props: {
-            title: dataTitle.data
+            title: dataTitle.data,
+            platform_id:id
         }
     }
 
@@ -27,7 +28,7 @@ export async function getServerSideProps(context) {
 
 
 
-export default function Comandos({  title }) {
+export default function Comandos({  title,platform_id }) {
 
     const router = useRouter()
 
@@ -77,7 +78,7 @@ export default function Comandos({  title }) {
                     {title.length > 0 ?
                         title.map((item) => (
                             <span key={item.id} className={styles.type}>
-                                <Link legacyBehavior href={`/command/${item.id}`}>
+                                <Link legacyBehavior href={`/${item.platform.name}/${platform_id}/command/${item.title}/${item.id}`}>
                                     <a className={styles.btn} >{item.title}</a>
                                 </Link>
                             </span>

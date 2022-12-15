@@ -1,15 +1,14 @@
 import Image from "next/image"
 import Link from "next/link"
-import styles from '../../styles/Command.module.css'
+import styles from '../../../../../styles/Command.module.css'
 import { useRouter } from 'next/router'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import React, { useState } from "react";
-import ModalCopy from "../../components/ModalCopy";
+import ModalCopy from "../../../../../components/ModalCopy";
 
 
 export async function getServerSideProps(context) {
     const id = context.params.title_id
-
 
     const link = 'http://localhost:5000'
 
@@ -20,7 +19,10 @@ export async function getServerSideProps(context) {
 
     return {
         props: {
-            command: dataCommand.data
+            command: dataCommand.data,
+            platform: context.params.platform,
+            title: context.params.title,
+            platform_id:context.params.platform_id
         }
     }
 
@@ -29,7 +31,9 @@ export async function getServerSideProps(context) {
 
 
 
-export default function Pokemon({ command }) {
+export default function Pokemon({ command,platform,title,platform_id }) {
+
+
     const router = useRouter()
 
     const [copy, setCopy] = useState(false);
@@ -46,9 +50,9 @@ export default function Pokemon({ command }) {
             {copy && <ModalCopy />}
 
 
-            { command[0]?.title &&
+            { title && platform &&
             <h1 className={styles.title}>
-                Comando {command[0].title.title.toUpperCase()} da Plataforma <a href="https://nextjs.org">Platform</a>
+                Comando {title.toUpperCase()} - <a href={`/${platform}/${platform_id}`}>{platform.toUpperCase()}</a>
             </h1>
             }
 
@@ -58,8 +62,6 @@ export default function Pokemon({ command }) {
 
                         <div key={item.id}>
                             <div className={styles.data_bottom} >
-
-
 
                                 <div className={styles.types_container} >
 
