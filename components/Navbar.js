@@ -8,7 +8,7 @@ export default function Navbar() {
    <nav className={style.navbar}>
     <div className={style.logo}>
         <Image src='/images/pokeball.png' width={30} height={30} alt='pokeball'/>
-        <h1>Comando Fácil</h1>
+        <h1>Comando Next</h1>
     </div>
 
     <ul className={style.link_items}>
@@ -19,6 +19,11 @@ export default function Navbar() {
         <li>
             <Link legacyBehavior href={'/about'}><a>Sobre</a></Link>
         </li>
+        <li>
+            <Link legacyBehavior href={'/admin'}><a>Admin</a></Link>
+        </li>
+
+        
     </ul>
 
    </nav>

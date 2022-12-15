@@ -26,7 +26,7 @@ export default function Home({platforms}) {
 
         <>
             <div className={styles.title_conteiner}>
-                <h1 className={styles.title} >Poke<span>Next</span></h1>
+                <h1 className={styles.title} >Comando<span>Next</span></h1>
                 <Image
                     src='/images/pokeball.png'
                     width={50}
