@@ -5,7 +5,7 @@ export default function About() {
     return (
         <div className={styles.container}>
 
-            <div className={styles.area_form} >
+            <form action="/register" className={styles.area_form} >
 
                 <div  className={styles.area_text_login} >
                     <Image
@@ -19,11 +19,11 @@ export default function About() {
 
                 </div>
 
-                <input placeholder='email...' />
-                <input placeholder='senha...' />
+                <input type="email" placeholder='email...' />
+                <input type="password" placeholder='senha...' />
 
                 <button>Entrar</button>
-            </div>
+            </form>
 
         </div>
     )
