@@ -1,20 +1,38 @@
 export function isTokenExpired(token) {
-    const payload = getPayload(token);
 
-    const clockTimestamp = Math.floor(Date.now() / 1000);
+    if (token) {
+        const payload = getPayload(token);
+        const clockTimestamp = Math.floor(Date.now() / 1000);
+        return {
+            expired: clockTimestamp > payload.exp,
+            data: {
+                id: payload?.id,
+                name: payload?.name,
+                email: payload?.email
 
-    return{
-        expired:clockTimestamp > payload.exp,
-        data:{
-            id: payload?.id,
-            name: payload?.name,
-            email: payload?.email
-
+            }
         }
 
+
+
+    } else {
+        return {
+            expired: true,
+            data: {
+                id: null,
+                name: null,
+                email: null
+
+            }
+
+        }
     }
 
-    return clockTimestamp > payload.exp;
+
+
+
+
+
 }
 
 export function getPayload(token) {
