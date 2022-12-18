@@ -17,6 +17,16 @@ export function setCookie(key,value,options=null) {
     });
 }
 
+
+export function delCookie(key,value=null,options=null) {
+
+    Cookies.remove(key, value, {
+        ...options,
+        secure: process.env.NODE_ENV === "production" ? true : false,
+    });
+}
+
+
 export function getCookie(key) {
     return Cookies.get(key);
 }
