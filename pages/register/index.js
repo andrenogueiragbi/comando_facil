@@ -1,31 +1,65 @@
 import styles from '../../styles/Login.module.css'
 import Image from 'next/image'
+import { setCookie, parseCookies } from '../../util/cookies';
+import { isTokenExpired } from '../../util/auth'
 
-export async function getServerSideProps(props) {
-    const link = 'https://commands-api.onrender.com'
+export async function getServerSideProps(context) {
 
-    
-    const result = await fetch(`${link}/platforms`)
-    const data = await result.json()
+    try {
+        const cookies = parseCookies(context.req);
 
-    return {
-        props: {
-            platforms: data.data
+        const user = isTokenExpired(cookies.token)
+
+
+        if (!cookies.token || user.expired) {
+            return {
+                redirect: {
+                    permanent: false,
+                    destination: "/login",
+                },
+            };
+
         }
+
+        console.log(`${user.data.name} LOGOU NO APP`)
+
+        user.data['token'] = cookies.token;
+
+        return {
+            props: {
+                user: user.data
+            }
+        }
+
+
+
+    } catch (err) {
+        return {
+            redirect: {
+                permanent: false,
+                destination: "/500",
+            },
+        };
+
     }
+
+
+
+
 
 
 
 }
 
 
-export default function Register() {
+export default function Register({ user }) {
     return (
         <div className={styles.container}>
+            <h1>{user.name}</h1>
 
             <div action="/cadastro" className={styles.area_form} >
 
-                <div  className={styles.area_text_login} >
+                <div className={styles.area_text_login} >
                     <Image
                         src='/images/plus.png'
                         width={40}
@@ -37,7 +71,7 @@ export default function Register() {
 
                 </div>
 
-      
+
 
                 <button>Platforma</button>
                 <button>Titulo</button>

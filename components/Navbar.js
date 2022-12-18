@@ -20,7 +20,7 @@ export default function Navbar() {
             <Link legacyBehavior href={'/about'}><a>Sobre</a></Link>
         </li>
         <li>
-            <Link legacyBehavior href={'/admin'}><a>Admin</a></Link>
+            <Link legacyBehavior href={'/login'}><a>Admin</a></Link>
         </li>
 
         
