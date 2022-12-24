@@ -1,13 +1,12 @@
 import styles from '../../styles/Admin.module.css'
 import Image from 'next/image'
-import { useEffect, useState } from "react";
 import { useRouter } from 'next/router';
 import { BaseUrl } from "../../util/link";
 import ModalErro from '../../components/ModalErro'
 import ModalAlert from '../../components/ModalAlert'
 import { setCookie,parseCookies } from '../../util/cookies';
 import { isTokenExpired } from '../../util/auth'
-
+import {useState} from 'react'
 
 export async function getServerSideProps(context) {
 

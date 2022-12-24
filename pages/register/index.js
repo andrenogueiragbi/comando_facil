@@ -73,10 +73,10 @@ export default function Register({ user }) {
 
 
 
-                <button>Platforma</button>
-                <button>Titulo</button>
-                <button>Comandos</button>
-                <button>Usuario</button>
+                <a href="/register/platform"><button>Platforma</button></a>
+                <a href="/register/title"><button>Titulo</button></a>
+                <a href="/register/commands"><button>Comandos</button></a>
+                <a href="/register/user"><button>Usuario</button></a>
             </div>
 
         </div>
