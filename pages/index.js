@@ -2,13 +2,12 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Card from '../components/Card'
+import { BaseUrl } from "../util/link";
 
 export async function getServerSideProps(props) {
-    const link = 'https://commands-api.onrender.com'
-
+  
     
-    const result = await fetch(`${link}/platforms`)
-    const data = await result.json()
+    const {data} = await BaseUrl.get(`/platforms`)
 
     return {
         props: {

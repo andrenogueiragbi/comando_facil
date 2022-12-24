@@ -2,20 +2,19 @@ import Image from "next/image"
 import Link from "next/link"
 import styles from '../../styles/Platform.module.css'
 import { useRouter } from 'next/router'
+import { BaseUrl } from "../../util/link";
+
 
 
 export async function getServerSideProps(context) {
     const id = context.params.platform_id
 
-    const link = 'https://commands-api.onrender.com'
 
-
-    const resultTitle = await fetch(`${link}/title/platform/${id}`)
-    const dataTitle = await resultTitle.json()
+    const {data} = await BaseUrl.get(`/title/platform/${id}`)
 
     return {
         props: {
-            title: dataTitle.data,
+            title: data.data,
             platform_id:id
         }
     }

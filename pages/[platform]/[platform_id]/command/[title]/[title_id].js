@@ -5,21 +5,20 @@ import { useRouter } from 'next/router'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import React, { useState } from "react";
 import ModalCopy from "../../../../../components/ModalCopy";
+import { BaseUrl } from "../../../../../util/link";
+
 
 
 export async function getServerSideProps(context) {
     const id = context.params.title_id
 
-    const link = 'https://commands-api.onrender.com'
 
-
-    const resultCommand = await fetch(`${link}/commands/title/${id}`)
-    const dataCommand = await resultCommand.json()
+    const {data} = await BaseUrl.get(`/commands/title/${id}`)
 
 
     return {
         props: {
-            command: dataCommand.data,
+            command: data.data,
             platform: context.params.platform,
             title: context.params.title,
             platform_id:context.params.platform_id
