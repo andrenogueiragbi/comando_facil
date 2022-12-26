@@ -39,7 +39,7 @@ export default function Home({platforms}) {
 
             <div className={styles.pokemon_container}>
 
-                {
+                {   platforms &&
                     platforms.map((item)=>(
                         <Card key={item.id} item={item}/>
                     ))
