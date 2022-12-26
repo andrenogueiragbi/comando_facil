@@ -9,6 +9,8 @@ export async function getServerSideProps(props) {
     
     const {data} = await BaseUrl.get(`/platforms`,{'Accept-Encoding': '*'} )
 
+    console.log(">>>>",data)
+
     return {
         props: {
             platforms: data.data
