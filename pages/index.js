@@ -7,7 +7,7 @@ import { BaseUrl } from "../util/link";
 export async function getServerSideProps(props) {
   
     
-    const {data} = await BaseUrl.get(`/platforms`,{'Accept-Encoding': '*'} )
+    const {data} = await BaseUrl.get(`/platforms`)
 
     console.log(">>>>",data)
 
