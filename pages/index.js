@@ -7,7 +7,7 @@ import { BaseUrl } from "../util/link";
 export async function getServerSideProps(props) {
   
     
-    const {data} = await BaseUrl.get(`/platforms`, { "Accept-Encoding": "gzip,deflate,compress" } )
+    const {data} = await BaseUrl.get(`/platforms` )
 
     return {
         props: {
@@ -39,7 +39,7 @@ export default function Home({platforms}) {
 
             <div className={styles.pokemon_container}>
 
-                {   platforms &&
+                {  
                     platforms.map((item)=>(
                         <Card key={item.id} item={item}/>
                     ))
