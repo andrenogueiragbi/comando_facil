@@ -30,13 +30,18 @@ export async function getServerSideProps(context) {
 
         }
 
+        const { data } = await BaseUrl.get(`/platforms`, { "Accept-Encoding": "gzip" })
+
         console.log(`${user.data.name} LOGOU NO APP`)
 
         user.data['token'] = cookies.token;
 
+
+
         return {
             props: {
-                user: user.data
+                user: user.data,
+                platforms: data.data
             }
         }
 
@@ -62,7 +67,7 @@ export async function getServerSideProps(context) {
 }
 
 
-export default function RegisterPlatform({ user }) {
+export default function RegisterPlatform({ user, platforms }) {
     const router = useRouter();
     const [openModal, setOpenModal] = useState(false)
     const [message, setMessage] = useState(null)
@@ -74,12 +79,14 @@ export default function RegisterPlatform({ user }) {
 
         event.preventDefault();
 
-        const platform = document.querySelector("#platform").value;
+        const platform = document.querySelector("#idPlatform").value;
+        const title = document.querySelector("#title").value;
         const description = document.querySelector("#description").value;
         const avatar = document.querySelector("#avatar").value;
 
 
-        if (!platform) {
+
+        if (!platform || !title || !description) {
             setFailRegisterNull(true)
             return
 
@@ -88,14 +95,13 @@ export default function RegisterPlatform({ user }) {
 
 
         try {
-
             const { data } = await BaseUrl.post(
-                "platforms",
-                { name: platform, avatar, description },
-                { headers: { Authorization: `Bearer ${user.token}` }}
+                "titles",
+                { id_platforms: platform, title, avatar, description },
+                { headers: { Authorization: `Bearer ${user.token}` } }
+
             );
 
-            console.log(data)
 
             if (!data.erro) {
                 setIcon('success')
@@ -122,21 +128,10 @@ export default function RegisterPlatform({ user }) {
 
         catch (e) {
 
-
             setMessage(e?.message)
             setOpenModal(true)
 
-
-
         }
-
-
-
-
-
-
-
-
 
     }
 
@@ -170,11 +165,23 @@ export default function RegisterPlatform({ user }) {
                         alt='code'
 
                     /> */}
-                    <h1 className={styles.text_login}>Cadastro Plataforma</h1>
+                    <h1 className={styles.text_login}>Cadastro Tipos</h1>
 
                 </div>
-                <label className={styles.labelform} >Nome da Teconologia</label>
-                <input id="platform" name="platform" placeholder='nome plataforma...' required />
+                <label >Plataforma</label>
+                <select id="idPlatform" name="idPlatform">
+
+                    {
+                        platforms.length > 0 && platforms &&
+                        platforms.map((item) => (
+                            <option id="platform" name="platform" key={item.id} value={item.id}>{item.name}</option>
+
+                        ))
+                    }
+
+                </select>
+                <label>Titulo</label>
+                <input id="title" name="title" placeholder='nome titulo...' required />
                 <label>Descrição</label>
                 <input id="description" name="description" placeholder='descrição...' required />
                 <label>Link do avatar</label>

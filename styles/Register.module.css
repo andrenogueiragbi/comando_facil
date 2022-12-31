@@ -10,7 +10,7 @@
   flex-direction: column;
   justify-content: center;
   width: 400px;
-  height: 500px;
+
   align-items: center;
   border-width: 2px;
   background-color: #333;
@@ -35,7 +35,20 @@
 
   
 }
+
+.area_form select{
+  padding: 10px;
+  margin: 10px;
+  width: 300px;
+  border-radius: .5rem;
+  font-weight: 600;
+  font-size: 1.0em;
+}
+
+
 .area_text_login{
+  margin-top: 1.0em;
+
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -48,6 +61,13 @@
   width: 300px;
 }
 
+.area_form label{
+  align-items: flex-end !important;
+  color: #e33d33;
+  font-size: 1.5em;
+}
+
+
 .icon{
   margin-left: 10px;
 }
@@ -58,6 +78,7 @@
   font-weight: 600;
   margin-left: .5em;
   border-width: 10px;
+  text-align: center;
 
   
 }
@@ -70,6 +91,7 @@
   border-radius: .5rem;
   font-size: 1.5em;
   font-weight: 600;
+  margin-top: 1.0em;
 }
 
 .area_form button:hover{

@@ -12,6 +12,10 @@ export async function getServerSideProps(context) {
 
     const {data} = await BaseUrl.get(`/title/platform/${id}`)
 
+    console.log(data.data)
+
+    
+
     return {
         props: {
             title: data.data,
@@ -60,10 +64,10 @@ export default function Comandos({  title,platform_id }) {
                 {
                     title.length > 0 &&
                     <>
-                        <h3>Descrição: </h3>
+                        <h3>O que é {title[0].platform.name}? </h3>
                         <div>
-
-                            <p>{title[0].platform.name}</p>
+                            <p>{title[0].platform.description}</p>
+                            <h3>Alguns do seus tipos de comandos:</h3>
                         </div>
                     </>
                 }

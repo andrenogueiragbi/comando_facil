@@ -15,6 +15,8 @@ export async function getServerSideProps(context) {
 
     const {data} = await BaseUrl.get(`/commands/title/${id}`)
 
+   
+
 
     return {
         props: {
