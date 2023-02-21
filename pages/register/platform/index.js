@@ -98,6 +98,10 @@ export default function RegisterPlatform({ user }) {
             console.log(data)
 
             if (!data.erro) {
+                document.querySelector("#platform").value = ''
+                document.querySelector("#description").value = ''
+                document.querySelector("#avatar").value = ''
+        
                 setIcon('success')
                 setMessage(data.message)
                 setOpenModal(true)

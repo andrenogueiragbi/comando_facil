@@ -11,9 +11,6 @@ export async function getServerSideProps(context) {
 
 
     const {data} = await BaseUrl.get(`/title/platform/${id}`)
-
-    console.log(data.data)
-
     
 
     return {

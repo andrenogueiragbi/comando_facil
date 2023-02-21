@@ -36,6 +36,31 @@
   
 }
 
+.area_form textarea{
+  padding: 10px;
+  margin: 10px;
+  width: 300px;
+  border-radius: .5rem;
+  font-weight: 600;
+  font-size: 1.0em;
+  height: 150px;
+
+  
+}
+
+.area_form_title {
+  padding: 10px;
+  margin: 10px;
+  width: 300px;
+  border-radius: .5rem;
+  font-weight: 600;
+  font-size: 1.0em;
+  height: 75px !important
+
+  
+}
+
+
 .area_form select{
   padding: 10px;
   margin: 10px;

@@ -15,10 +15,7 @@ export async function getServerSideProps(context) {
     try {
         const cookies = parseCookies(context.req);
 
-
-
         const user = isTokenExpired(cookies.token)
-
 
         if (!cookies.token || user.expired) {
             return {
@@ -82,8 +79,8 @@ export default function RegisterPlatform({ user, platforms }) {
         const platform = document.querySelector("#idPlatform").value;
         const title = document.querySelector("#title").value;
         const description = document.querySelector("#description").value;
-        const avatar = document.querySelector("#avatar").value;
-
+        /*         const avatar = document.querySelector("#avatar").value;
+         */
 
 
         if (!platform || !title || !description) {
@@ -97,13 +94,16 @@ export default function RegisterPlatform({ user, platforms }) {
         try {
             const { data } = await BaseUrl.post(
                 "titles",
-                { id_platforms: platform, title, avatar, description },
+                { id_platforms: platform, title, undefined, description },
                 { headers: { Authorization: `Bearer ${user.token}` } }
 
             );
 
 
             if (!data.erro) {
+
+                document.querySelector("#title").value = ""
+                document.querySelector("#description").value = ""
                 setIcon('success')
                 setMessage(data.message)
                 setOpenModal(true)
@@ -184,9 +184,12 @@ export default function RegisterPlatform({ user, platforms }) {
                 <input id="title" name="title" placeholder='nome titulo...' required />
                 <label>Descrição</label>
                 <input id="description" name="description" placeholder='descrição...' required />
-                <label>Link do avatar</label>
-                <input id="avatar" name="avatar" placeholder='link do avatar...' />
 
+                {/*     
+
+ <label>Link do avatar</label>
+<input id="avatar" name="avatar" placeholder='link do avatar...' />
+ */}
 
                 <button type='submit'>Salvar</button>
             </form>
