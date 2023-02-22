@@ -67,10 +67,13 @@ export default function RegisterPlatform({ user }) {
     const [openModal, setOpenModal] = useState(false)
     const [message, setMessage] = useState(null)
     const [icon, setIcon] = useState(null)
+    const [loading, setLoading] = useState(false)
+
 
 
 
     const onSubmit = async (event) => {
+        setLoading(true)
 
         event.preventDefault();
 
@@ -105,6 +108,8 @@ export default function RegisterPlatform({ user }) {
                 setIcon('success')
                 setMessage(data.message)
                 setOpenModal(true)
+                setLoading(false)
+
 
 
 
@@ -114,6 +119,8 @@ export default function RegisterPlatform({ user }) {
                 setIcon('info')
                 setMessage(data.message)
                 setOpenModal(true)
+                setLoading(false)
+
 
 
             }
@@ -185,7 +192,9 @@ export default function RegisterPlatform({ user }) {
                 <input id="avatar" name="avatar" placeholder='link do avatar...' />
 
 
-                <button type='submit'>Salvar</button>
+                <button type='submit'>
+                    {loading ? <span className={styles.spinner}></span> :'Salvar'}
+                </button>
             </form>
 
 

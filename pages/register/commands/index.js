@@ -11,6 +11,8 @@ import Link from 'next/link';
 
 
 
+
+
 export async function getServerSideProps(context) {
 
     try {
@@ -76,10 +78,12 @@ export default function RegisterPlatform({ user, platforms }) {
     const [icon, setIcon] = useState(null)
     const [titles, setTitles] = useState([])
     const [platformSelect, setPlatformSelect] = useState(1)
+    const [loading, setLoading] = useState(false)
 
 
 
     const onSubmit = async (event) => {
+        setLoading(true)
 
         event.preventDefault();
 
@@ -87,11 +91,10 @@ export default function RegisterPlatform({ user, platforms }) {
         const description = document.querySelector("#description").value;
         const commands = document.querySelector("#commands").value;
         const tags = document.querySelector("#tags").value;
-        const title_id = document.querySelector("#title_id").value;
+        const title_id = document.querySelector("#idTitle").value;
         const { name: creator } = user
 
         console.log(platform, "|", description, commands, tags, creator, title_id)
-
 
 
         if (!description || !commands || !description || !tags || !creator || !title_id) {
@@ -99,7 +102,6 @@ export default function RegisterPlatform({ user, platforms }) {
             return
 
         }
-
 
         try {
             const { data } = await BaseUrl.post(
@@ -117,6 +119,7 @@ export default function RegisterPlatform({ user, platforms }) {
                 setIcon('success')
                 setMessage(data.message)
                 setOpenModal(true)
+                setLoading(false)
 
                 return
 
@@ -124,6 +127,8 @@ export default function RegisterPlatform({ user, platforms }) {
                 setIcon('info')
                 setMessage(data.message)
                 setOpenModal(true)
+                setLoading(false)
+
 
 
             }
@@ -148,6 +153,8 @@ export default function RegisterPlatform({ user, platforms }) {
         const title = async () => {
             await BaseUrl.get(`/title/platform/${platformSelect}`, { "Accept-Encoding": "gzip" })
                 .then(({ data }) => {
+                    console.log(">", data.data)
+
                     setTitles(data.data);
                     if (data.data.length == 0) {
                         setMessage('Não existe titulo(categoria) para a plataforma selecionada.')
@@ -165,13 +172,6 @@ export default function RegisterPlatform({ user, platforms }) {
 
 
     }, [platformSelect])
-
-
-
-
-
-
-
 
 
     return (
@@ -212,7 +212,7 @@ export default function RegisterPlatform({ user, platforms }) {
 
                 </select>
                 <label>Titulo</label>
-                <select id="idPlatform" name="idPlatform">
+                <select id="idTitle" name="idTitle">
 
                     {
                         titles.length > 0 && titles &&
@@ -240,8 +240,16 @@ export default function RegisterPlatform({ user, platforms }) {
                 <input id="avatar" name="avatar" placeholder='link do avatar...' />
  */}
 
-                <button type='submit'>Salvar</button>
+                <button type='submit'>
+                    {loading ? <span className={styles.spinner}></span> : 'Salvar'}
+                </button>
+
+
+
+
+
             </form>
+
 
 
         </div>
