@@ -52,15 +52,13 @@ export default function Login() {
     const router = useRouter();
     const [failLogin, setFailLogin] = useState(false)
     const [failLoginNull, setFailLoginNull] = useState(false)
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
 
 
-    const onSubmit = async (event) => {
+    const onSubmit = async () => {
 
-        event.preventDefault();
-
-        const email = document.querySelector("#username").value;
-        const password = document.querySelector("#password").value;
 
         if(!email || !password) {
             setFailLoginNull(true)
@@ -73,7 +71,8 @@ export default function Login() {
 
 
 
-        const { data } = await BaseUrl.post("users/login", { email, password });
+        const  {data}  = await BaseUrl.post("users/login", { email, password });
+
 
 
 
@@ -121,7 +120,7 @@ export default function Login() {
 
             }
 
-            <form method="post" onSubmit={onSubmit} className={styles.area_form} >
+            <form  className={styles.area_form} >
 
                 <div className={styles.area_text_login} >
                     <Image
@@ -135,10 +134,10 @@ export default function Login() {
 
                 </div>
 
-                <input type="email" id="username" name="username" placeholder='email...' />
-                <input type="password" id="password" name="password" placeholder='senha...' />
+                <input type="email" id="username" name="username" onChange={e=>setEmail(e.target.value)} placeholder='email...' />
+                <input type="password" id="password" name="password" onChange={e=>setPassword(e.target.value)} placeholder='senha...' />
 
-                <button type='submit'>Entrar</button>
+                <button onClick={onSubmit} type='button'>Entrar</button>
             </form>
 
         </div>
